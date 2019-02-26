@@ -21,23 +21,31 @@ class UserController extends Controller
         ]);
 
         // Handle the user upload of avatar
-        if($request->hasFile('avatar')){
-            $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+        if(!$request->hasFile('avatar')){
+            return redirect('/profile')->with('error', 'Neįkėlete jokios nuotraukos');
+        }
 
-            $user = Auth::user();
+        $avatar = $request->file('avatar');
+        $filename = time() . '.' . $avatar->getClientOriginalExtension();
 
-//            @todo: cath errors
-            if ($user->avatar != 'user.jpg') {
-                Storage::delete('avatars/' . $user->avatar);
+        $user = Auth::user();
+
+        if ($user->avatar != 'user.jpg') {
+            if (!Storage::delete('avatars/' . $user->avatar)) {
+                return redirect('/profile')->with('error', 'Nepavyko ištrinti senojo nuotraukos failo');
             }
+        }
 
-            Image::make($avatar)->resize(300, 300)->save( public_path('/storage/avatars/' . $filename ) );
-            $user->avatar = $filename;
-            $user->save();
+        if (!Image::make($avatar)->resize(300, 300)->save( public_path('/storage/avatars/' . $filename ) )) {
+            return redirect('/profile')->with('error', 'Nepavyko įkelti nuotraukos failo');
+        }
+
+        $user->avatar = $filename;
+
+        if (!$user->save()) {
+            return redirect('/profile')->with('error', 'Nepavyko atnaujinti duomenų bazės');
         }
 
         return redirect('/profile')->with('success', 'Nuotrauka pakeista!');
-
     }
 }

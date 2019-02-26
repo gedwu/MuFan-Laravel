@@ -23,6 +23,13 @@ li.navbar-link:hover {
   background-color: #ac3911;
 }
 
-li.navbar-link > a {
+.navbar-link {
   color: #ffffff;
+}
+
+.navbar-ul-parent {
+  min-height: 100%;
+  height: 100%;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
 }
