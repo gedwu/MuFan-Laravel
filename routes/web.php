@@ -11,14 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('verified');
+Route::get('/', 'GameController@index');
 
 Auth::routes(['verify' => true]);
-
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::get('profile', 'UserController@profile');
 
 Route::post('profile', 'UserController@update_avatar');
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/epl', 'HomeController@tableEpl');
+
+
+Route::get('/games', 'GameController@index');

@@ -8,12 +8,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse navbar-ul-parent" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            {{--<ul class="navbar-nav mr-auto">--}}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="/" class="navbar-link">Titulinis</a>
+                    <a href="/" class="nav-link navbar-link">Titulinis</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/epl" class="nav-link navbar-link">Lentelė</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/games" class="nav-link navbar-link">Mačai</a>
                 </li>
             </ul>
 
