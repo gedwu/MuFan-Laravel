@@ -96,7 +96,6 @@ class GameController extends Controller
     private function formatGameList($list) {
         $games = [];
         foreach ($list as $key => $game) {
-//            $games[$key]['date'] = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $game->start)->format('Y-m-d');
             $games[$key]['date'] = $this->getDateLong($game->start);
             $games[$key]['league_photo'] = 'storage/leagues/'.$game->league->photo;
             $games[$key]['league_name'] = $game->league->name;

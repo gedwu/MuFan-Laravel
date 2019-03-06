@@ -16,6 +16,10 @@ class PlayerController extends Controller
     {
         $players = Player::all();
 
+        foreach ($players as $key => $player) {
+            $players[$key]->birth_date = \Carbon\Carbon::parse($player->birth_date)->age;
+        }
+
         return view('players.index', compact('players'));
     }
 
