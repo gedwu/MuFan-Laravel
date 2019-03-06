@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeGoalsColumnsOfGamesTableToNullable extends Migration
+class CreatePositionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class ChangeGoalsColumnsOfGamesTableToNullable extends Migration
      */
     public function up()
     {
-        Schema::table('games', function (Blueprint $table) {
-            $table->unsignedInteger('goals_in')->nullable()->change();
-            $table->unsignedInteger('goals_out')->nullable()->change();
+        Schema::create('positions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->unique();
+            $table->string('letter', '2')->unique();
         });
     }
 
@@ -26,8 +27,6 @@ class ChangeGoalsColumnsOfGamesTableToNullable extends Migration
      */
     public function down()
     {
-        Schema::table('games', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('positions');
     }
 }

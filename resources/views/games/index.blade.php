@@ -13,7 +13,7 @@
                         <img src="{{$game['home_logo']}}" class="logo-mini">
                     </td>
 
-                    <td role="button" class="text-center">
+                    foreach         <td role="button" class="text-center">
                         <button class="{{$game['button_class']}}">
                             {{$game['button']}}
                         </button>

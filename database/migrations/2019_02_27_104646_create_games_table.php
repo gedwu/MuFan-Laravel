@@ -19,8 +19,8 @@ class CreateGamesTable extends Migration
             $table->unsignedInteger('team_id')->comment('Opponents team');
 
 //            @todo: change default to NULL ?
-            $table->unsignedInteger('goals_in')->default(0);
-            $table->unsignedInteger('goals_out')->default(0);
+            $table->unsignedInteger('goals_in')->nullable();
+            $table->unsignedInteger('goals_out')->nullable();
             $table->boolean('home')->default(1);
             $table->timestamp('start');
         });

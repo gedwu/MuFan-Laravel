@@ -17,6 +17,7 @@ class CreateCountriesTable extends Migration
 //            @todo: Prideti trumpinio (pvz: "LTU") stulpeli?
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('short', '3')->unique();
             $table->string('nationality')->unique();
             $table->string('photo')->default('country.jpg');
         });

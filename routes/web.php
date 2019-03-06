@@ -25,3 +25,4 @@ Route::get('/epl', 'HomeController@tableEpl');
 
 
 Route::get('/games', 'GameController@index');
+Route::get('/players', 'PlayerController@index');

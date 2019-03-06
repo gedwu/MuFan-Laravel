@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a href="/games" class="nav-link navbar-link">Mačai</a>
                 </li>
+                <li class="nav-item">
+                    <a href="/players" class="nav-link navbar-link">Žaidėjai</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
