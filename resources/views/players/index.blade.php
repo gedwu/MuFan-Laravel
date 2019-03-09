@@ -17,7 +17,6 @@
                             {{$player->first_name.' '.$player->last_name}}
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-3">
                             <img src="storage/flags/{{$player->country->photo}}" style="display: inline-block; width: 27px; height: 21px;">
@@ -34,9 +33,6 @@
                             metai
                         </div>
                     </div>
-                    
-
-
                 </div>
             </div>
         </div>

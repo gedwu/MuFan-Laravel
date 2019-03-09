@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="/" class="nav-link navbar-link">Titulinis</a>
+                    <a href="/articles" class="nav-link navbar-link">Naujienos</a>
                 </li>
                 <li class="nav-item">
                     <a href="/epl" class="nav-link navbar-link">Lentelė</a>
