@@ -14,21 +14,25 @@ class CreatePlayersTable extends Migration
     public function up()
     {
         Schema::create('players', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('country_id');
             $table->unsignedInteger('position_id');
-            //changed ->default(0)
-            $table->unsignedInteger('transfer_id')->default(0);
+            $table->unsignedInteger('transfer_id')->nullable();
 
+            $table->unsignedInteger('number');
             $table->string('first_name');
             $table->string('last_name');
-//            @todo: change string to integer
-            $table->string('height')->nullable();
+
+            $table->integer('height')->nullable();
             $table->string('birth_place')->nullable();
             $table->string('photo')->default('player.jpg');
+            $table->date('birth_date')->nullable();
 
             $table->unique(['first_name', 'last_name']);
-            $table->foreign('country_id')->references('id')->on('country');
+            $table->foreign('country_id')->references('id')->on('countries');
+            $table->foreign('position_id')->references('id')->on('positions');
+            $table->foreign('transfer_id')->references('id')->on('transfers');
 
         });
     }

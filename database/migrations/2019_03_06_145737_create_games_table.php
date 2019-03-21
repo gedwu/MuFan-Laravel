@@ -14,15 +14,17 @@ class CreateGamesTable extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('league_id');
             $table->unsignedInteger('team_id')->comment('Opponents team');
-
-//            @todo: change default to NULL ?
             $table->unsignedInteger('goals_in')->nullable();
             $table->unsignedInteger('goals_out')->nullable();
             $table->boolean('home')->default(1);
             $table->timestamp('start');
+
+            $table->foreign('league_id')->references('id')->on('leagues');
+            $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 

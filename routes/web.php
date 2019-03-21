@@ -27,3 +27,5 @@ Route::get('/epl', 'HomeController@tableEpl');
 Route::get('/games', 'GameController@index');
 Route::get('/players', 'PlayerController@index');
 Route::get('/articles', 'ArticleController@index');
+
+Route::post('/articles', 'ArticleController@store');

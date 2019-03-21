@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    @foreach($players as $player)
+    @forelse($players as $player)
         <div class="col-md-3">
             <div class="card">
                 <img class="card-img-top" src="storage/players500x333/{{$player->photo}}" alt="Card image cap">
@@ -36,7 +36,9 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @empty
+        <p>Žaidėjų duomenų bazėje nerasta</p>
+    @endforelse
 </div>
 
 @endsection

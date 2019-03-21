@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Test;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -14,6 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
+//        @todo: testing
+
         $articles = Article::all();
 
         foreach ($articles as $key => $article) {
@@ -21,6 +24,7 @@ class ArticleController extends Controller
                 \Carbon\Carbon::parse($article->created_at)->diffForHumans();
         }
 
+//        dump($articles->toArray());
         return view('articles.index', compact('articles'));
     }
 
@@ -43,7 +47,14 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        Article::create($attributes);
+
+        return redirect('/articles');
     }
 
     /**
@@ -89,5 +100,18 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+    }
+
+    public function saveClick(Request $request) {
+        $clickObject = new Test;
+        $clickObject->article_id = $request->input('article_id');
+        $clickObject->ip = $request->input('ip_adress');
+        $clickObject->country = $request->input('country_name');
+        $clickObject->browser = $request->input('agent_info');
+
+        $return = ['success' => 'Click was saved'];
+        if($clickObject->save()) {
+            return response()->json($return);
+        }
     }
 }

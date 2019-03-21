@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyToLeaguesTable extends Migration
+class CreateLeaguesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddForeignKeyToLeaguesTable extends Migration
      */
     public function up()
     {
-        Schema::table('leagues', function (Blueprint $table) {
-            $table->foreign('country_id')->references('id')->on('countries');
+        Schema::create('leagues', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->unique();
+            $table->string('photo')->default('league.jpg');
         });
     }
 
@@ -25,8 +27,6 @@ class AddForeignKeyToLeaguesTable extends Migration
      */
     public function down()
     {
-        Schema::table('leagues', function (Blueprint $table) {
-            $table->dropForeign('country_id');
-        });
+        Schema::dropIfExists('leagues');
     }
 }

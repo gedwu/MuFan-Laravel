@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyToTeamsTable extends Migration
+class CreatePositionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddForeignKeyToTeamsTable extends Migration
      */
     public function up()
     {
-        Schema::table('teams', function (Blueprint $table) {
-            $table->foreign('country_id')->references('id')->on('countries');
+        Schema::create('positions', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->increments('id');
+            $table->string('name')->unique();
+            $table->string('short', '3')->unique();
         });
     }
 
@@ -25,8 +28,6 @@ class AddForeignKeyToTeamsTable extends Migration
      */
     public function down()
     {
-        Schema::table('teams', function (Blueprint $table) {
-            $table->dropForeign('country_id');
-        });
+        Schema::dropIfExists('positions');
     }
 }

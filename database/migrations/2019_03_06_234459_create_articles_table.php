@@ -14,11 +14,12 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
 
             $table->string('title');
             $table->text('body');
-            $table->string('photo')->default('united.jpg');
+            $table->string('photo')->default('article.jpg');
 
             $table->string('video')->nullable();
             $table->unsignedInteger('game_id')->nullable();
@@ -28,7 +29,7 @@ class CreateArticlesTable extends Migration
 
             $table->foreign('game_id')->references('id')->on('games');
 //            @todo How to avoid duplicate when we have game_id?
-            $table->foreign('league_id')->references('id')->on('league_id');
+            $table->foreign('league_id')->references('id')->on('leagues');
             $table->foreign('player_id')->references('id')->on('players');
         });
     }

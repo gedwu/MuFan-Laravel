@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLeaguesTable extends Migration
+class CreateTeamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateLeaguesTable extends Migration
      */
     public function up()
     {
-        Schema::create('leagues', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-//            @todo: Do I need country ID?
             $table->unsignedInteger('country_id');
             $table->string('name')->unique();
-            $table->string('photo')->default('league.jpg');
+            $table->string('photo')->default('team.jpg');
+
+            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 
@@ -29,6 +31,6 @@ class CreateLeaguesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leagues');
+        Schema::dropIfExists('teams');
     }
 }

@@ -25,5 +25,6 @@
     </div>
     {{--@todo What defer does?--}}
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
 </html>
