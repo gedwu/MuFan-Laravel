@@ -39,7 +39,7 @@
                 @else
                     <li class="nav-item dropdown">
                         <a href="#" class="dropdown-toggle navbar-link" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
-                            <img src="storage/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top: -4px; left:10px; border-radius:50%">
+                            <img src="/storage/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top: -4px; left:10px; border-radius:50%">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 

@@ -17,9 +17,10 @@ class CreateCountriesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('short', '3')->unique();
+            $table->string('name_short', '3')->unique();
             $table->string('nationality')->unique();
             $table->string('photo')->default('country.jpg');
+            $table->timestamps();
         });
     }
 

@@ -14,6 +14,8 @@ class PlayerController extends Controller
      */
     public function index()
     {
+//        dd(\App\Country::where('name_short', 'fra')->first()->id);
+//        dd(\App\Position::where('short', 'M')->first()->id);
         $players = Player::all();
 
         foreach ($players as $key => $player) {
@@ -87,5 +89,45 @@ class PlayerController extends Controller
     public function destroy(Player $player)
     {
         //
+    }
+
+    public function add_players_data() {
+        $france_id = \App\Country::where('name_short', 'fra')->first()->id;
+
+        $mf_id = \App\Position::where('short', 'M')->first()->id;
+        $at_id = \App\Position::where('short', 'A')->first()->id;
+
+        $players = [
+            [
+                'country_id' => $france_id,
+                'position_id' => $mf_id,
+                'number' => 6,
+                'first_name' => 'Paul',
+                'last_name' => 'Pogba',
+                'photo' => 'Pogba.jpg',
+                'birth_date' => '1993-03-15',
+            ],
+            [
+                'country_id' => $france_id,
+                'position_id' => $at_id,
+                'number' => 9,
+                'first_name' => 'Anthony',
+                'last_name' => 'Martial',
+                'photo' => 'Martial.jpg',
+                'birth_date' => '1995-12-05',
+            ],
+        ];
+
+        foreach ($players as $player) {
+            Player::create([
+                'country_id' => $player['country_id'],
+                'position_id' => $player['position_id'],
+                'number' => $player['number'],
+                'first_name' => $player['first_name'],
+                'last_name' => $player['last_name'],
+                'photo' => $player['photo'],
+                'birth_date' => $player['birth_date'],
+            ]);
+        }
     }
 }

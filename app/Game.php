@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
 //    @todo: add seeder
-    protected $guarded = ['id'];
+    protected $guarded = [];
+
+    public $timestamps = false;
 
     public function league() {
         return $this->belongsTo('App\League');

@@ -16,6 +16,7 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+
             $table->unsignedInteger('country_id');
             $table->unsignedInteger('position_id');
             $table->unsignedInteger('transfer_id')->nullable();
@@ -24,9 +25,10 @@ class CreatePlayersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
 
+            $table->string('photo')->default('player.jpg');
+
             $table->integer('height')->nullable();
             $table->string('birth_place')->nullable();
-            $table->string('photo')->default('player.jpg');
             $table->date('birth_date')->nullable();
 
             $table->unique(['first_name', 'last_name']);

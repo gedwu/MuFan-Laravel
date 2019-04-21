@@ -17,6 +17,7 @@ class CreateArticleTagTable extends Migration
             $table->primary(['article_id', 'tag_id']);
             $table->unsignedInteger('article_id');
             $table->unsignedInteger('tag_id');
+            $table->timestamps();
 
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');

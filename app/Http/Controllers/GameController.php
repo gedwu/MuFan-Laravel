@@ -15,9 +15,9 @@ class GameController extends Controller
     public function index()
     {
         $oldGames =
-            Game::orderBy('start', 'desc')->where('start', '<', NOW())->take(2)->get()->reverse();
+            Game::orderBy('start', 'desc')->where('start', '<', NOW())->take(3)->get()->reverse();
         $newGames =
-            Game::orderBy('start', 'asc')->where('start', '>', NOW())->take(2)->get();
+            Game::orderBy('start', 'asc')->where('start', '>', NOW())->take(3)->get();
 
         $games = array_merge(
             $this->formatGameList($oldGames),
@@ -132,6 +132,7 @@ class GameController extends Controller
         return $games;
     }
 
+//    @todo: move to helper
     function getDateLong($string) {
         $month = substr($string, 5, 2);
         $day = substr($string, 8, 2);

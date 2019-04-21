@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use App\Test;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -15,19 +14,16 @@ class ArticleController extends Controller
      */
     public function index()
     {
-//        @todo: testing
+        $articles = Article::paginate(12);
 
-        $articles = Article::all();
-
+//        @todo: Ar sitam kodui vieta kontroleryje
         foreach ($articles as $key => $article) {
             $articles[$key]->time_ago =
                 \Carbon\Carbon::parse($article->created_at)->diffForHumans();
         }
 
-//        dump($articles->toArray());
         return view('articles.index', compact('articles'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -65,7 +61,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('articles.show', compact('article'));
     }
 
     /**
@@ -102,16 +98,4 @@ class ArticleController extends Controller
         //
     }
 
-    public function saveClick(Request $request) {
-        $clickObject = new Test;
-        $clickObject->article_id = $request->input('article_id');
-        $clickObject->ip = $request->input('ip_adress');
-        $clickObject->country = $request->input('country_name');
-        $clickObject->browser = $request->input('agent_info');
-
-        $return = ['success' => 'Click was saved'];
-        if($clickObject->save()) {
-            return response()->json($return);
-        }
-    }
 }

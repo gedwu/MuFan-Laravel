@@ -17,8 +17,12 @@ class CreateTeamsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('country_id');
+//            @todo: City?
             $table->string('name')->unique();
+            $table->string('name_short')->unique();
+            $table->string('nickname')->nullable();
             $table->string('photo')->default('team.jpg');
+            $table->timestamps();
 
             $table->foreign('country_id')->references('id')->on('countries');
         });

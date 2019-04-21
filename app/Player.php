@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Player extends Model
 {
-    protected $fillable = ['first_name', 'last_name', 'height', 'birth_place', 'photo'];
+    protected $guarded =[];
+
+    public $timestamps = false;
 
     public function country() {
         return $this->belongsTo('App\Country');

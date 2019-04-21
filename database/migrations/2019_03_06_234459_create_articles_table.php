@@ -17,6 +17,7 @@ class CreateArticlesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
 
+//            @todo: add author id
             $table->string('title');
             $table->text('body');
             $table->string('photo')->default('article.jpg');

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'GameController@index');
+Route::get('/', 'ArticleController@index');
 
 Auth::routes(['verify' => true]);
 
@@ -23,9 +23,27 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/epl', 'HomeController@tableEpl');
 
+Route::get('/articles', 'ArticleController@index');
+Route::get('/articles/{article}', 'ArticleController@show');
+
+
 
 Route::get('/games', 'GameController@index');
 Route::get('/players', 'PlayerController@index');
-Route::get('/articles', 'ArticleController@index');
 
 Route::post('/articles', 'ArticleController@store');
+
+
+//Adding data to database
+
+Route::get('/add-countries-data', 'CountryController@create_countries');
+
+Route::get('/add-leagues-data', 'LeagueController@create_leagues');
+
+Route::get('/add-positions-data', 'PositionController@add_positions');
+
+Route::get('/add-teams-england', 'TeamController@add_england_team');
+
+
+Route::get('/add-players-data', 'PlayerController@add_players_data');
+

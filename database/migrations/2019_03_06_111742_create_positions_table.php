@@ -16,7 +16,10 @@ class CreatePositionsTable extends Migration
         Schema::create('positions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+//            @todo: change name to "group", e. g. (GK, D, M, A)
             $table->string('name')->unique();
+//            @todo: add col name e. g. (CB, RB, RM, ST, CF)
+//            @todo: or add "direction" e. g.: left, center, right
             $table->string('short', '3')->unique();
         });
     }
