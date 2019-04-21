@@ -61,7 +61,10 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('articles.show', compact('article'));
+        $articleId  = $article->id;
+//        $userId = auth()->user()->id;
+        $userId = 1;
+        return view('articles.show', compact('article', 'articleId', 'userId'));
     }
 
     /**

@@ -4,8 +4,11 @@ window.Vue = require('vue');
 
 let axios = require('axios');
 
-Vue.component('article-comment', require('./components/ArticleComment.vue').default);
+Vue.component('comment-box', require('./components/CommentBox.vue').default);
 
 const app = new Vue({
+    component: {
+
+    },
     el: '#app'
 });

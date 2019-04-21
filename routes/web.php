@@ -47,3 +47,4 @@ Route::get('/add-teams-england', 'TeamController@add_england_team');
 
 Route::get('/add-players-data', 'PlayerController@add_players_data');
 
+Route::get('/comments', 'CommentController@get');

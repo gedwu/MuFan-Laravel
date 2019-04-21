@@ -8,7 +8,13 @@
         </div>
         <div>{{$article->body}}</div>
     </article>
+    <div id="app">
+        <comment-box
+                :user-id="{{ $userId  }}"
+                :article-id="{{ $articleId  }}">
 
-    <article-comment></article-comment>
+        </comment-box>
+    </div>
+
 @endsection
 
